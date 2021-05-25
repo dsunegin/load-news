@@ -1,0 +1,46 @@
+{
+  "name": "load-news",
+  "version": "1.0.0",
+  "description": "",
+  "main": "focus_vote.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "commit": "commit-wizard",
+    "compile": "npx tsc console.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dsunegin/load-news.git"
+  },
+  "author": "Denis Sunegin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dsunegin/load-news/issues"
+  },
+  "homepage": "https://github.com/dsunegin/load-news#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "clipboardy": "^2.3.0",
+    "console": "^0.7.2",
+    "dotenv": "^8.6.0",
+    "iconv-lite": "^0.5.1",
+    "mysql2": "^2.1.0",
+    "node-cron": "^3.0.0",
+    "puppeteer": "^2.1.1",
+    "random-useragent": "^0.5.0",
+    "winston": "^3.3.3"
+  },
+  "config": {
+    "pre-git": {
+      "commit-msg": "simple",
+      "pre-commit": [],
+      "pre-push": [],
+      "post-commit": [],
+      "post-checkout": [],
+      "post-merge": []
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^15.6.1"
+  }
+}
