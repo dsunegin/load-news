@@ -8,7 +8,6 @@ if (envconf.error) {
     throw envconf.error;
 } // ERROR if Config .env file is missing
 
-//const clipboardy = require('clipboardy');
 //const CRON=""
 //const CRON="10 */13 * * * *";
 
@@ -24,9 +23,8 @@ const main = async () => {
                 '--disable-gpu',
                 '--disable-dev-shm-usage'] };
         // define source and target language code
-        let sourceLang = 'auto', targetLang = 'ru';
 
-        let url_vote = 'https://focus.ua/ratings/481700-top-50-blogerov-ukrainy-rejting-fokusa/grupa-1/2836/dmitriy-vasilec';
+        let url_vote = '';
         const browser = await puppeteer.launch(launchOptions);
         await browser.defaultBrowserContext().overridePermissions(url_vote, ['clipboard-read', 'clipboard-write']);
         const page = await browser.newPage();
@@ -38,35 +36,28 @@ const main = async () => {
 
 
         await page.goto(url_vote);
-        await page.waitFor(15000);
+        await page.waitForTimeout(15000);
 
         // detect the source textarea for input data (source string)
         //await page.waitForSelector('#source');
 
         await page.waitForSelector('div.js-rating-votes');
         await page.click('button.btn.btn-danger');
-        await page.waitFor(5000);
+        await page.waitForTimeout(5000);
 
         await page.waitForSelector('div.modal-content > div.modal-body > div.voting__title');
-        // get the result string (translated text)
+
+        // get the result string (vote text)
         const voteResult = await page.evaluate(() => {
             let row =document.querySelector('div.modal-content > div.modal-body > div.voting__title');
-            return row.textContent;//[0].textContent;
+            return row.textContent;
         });
 
         console.log(voteResult);
-        /*await page.waitForFunction(() =>
-            [...document.querySelectorAll('div[class="asset"]')].some(e => e.textContent.includes('Assets Folder'))
-        );*/
 
-        await page.waitFor(30000);
-
-
-
-
-
-        await page.waitFor(1000);
+        await page.waitForTimeout(5000);
         await browser.close();
+        return 'Voted';
 
     } catch (err) {
         console.log(err);
