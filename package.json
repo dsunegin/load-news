@@ -20,7 +20,7 @@
   "homepage": "https://github.com/dsunegin/load-news#readme",
   "dependencies": {
     "axios": "^0.21.1",
-    "clipboardy": "^2.3.0",
+    "clipboardy": "^3.0.0",
     "console": "^0.7.2",
     "dotenv": "^8.6.0",
     "iconv-lite": "^0.5.1",
